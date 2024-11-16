@@ -23,19 +23,19 @@ with st.sidebar:
                 """,unsafe_allow_html = True)
 
 # to using this you can uncomment this block code and change you key sheet and ghseet api 
-# def get_data_to_gsheet(sheetname, data):
-#     """
-#     Insert a data
-#     """
-#     gc = gspread.service_account(filename="streamlit_app/key/my_key.json")
-#     sh = gc.open_by_key("gsheet_key") # MP real
+def get_data_to_gsheet(sheetname, data):
+     """
+     Insert a data
+     """
+     gc = gspread.service_account(filename="streamlit_app/key/my_key.json")
+     sh = gc.open_by_key("gsheet_key") # MP real
 
-#     # # select sheet 
-#     worksheet_1 = sh.worksheet(f"Sheet1") 
-#     # worksheet_1.clear() # clear worksheet 
+    # # select sheet 
+     worksheet_1 = sh.worksheet(f"Sheet1") 
+     orksheet_1.clear() # clear worksheet 
 
-#     # worksheet_1.update([df.columns.values.tolist()] + df.fillna("").values.tolist()) # < this for update new format
-#     worksheet_1.append_rows(data.values.tolist()) # append value when sumbit  
+     # worksheet_1.update([df.columns.values.tolist()] + df.fillna("").values.tolist()) # < this for update new format
+     worksheet_1.append_rows(data.values.tolist()) # append value when sumbit  
 
 
 # helper function to get a recomendation
