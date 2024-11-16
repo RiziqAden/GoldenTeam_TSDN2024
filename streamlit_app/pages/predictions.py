@@ -31,7 +31,7 @@ def get_data_to_gsheet(sheetname, data):
      sh = gc.open_by_key("1ZqBG4UIGUmopoiMkgSVrHmLE7Q6Vjw5Nr7I3hNORCZQ") # MP real
 
     # # select sheet 
-     worksheet_1 = sh.worksheet(f"my_sheet") 
+     worksheet_1 = sh.worksheet(f"Sheet1") 
      orksheet_1.clear() # clear worksheet 
 
      # worksheet_1.update([df.columns.values.tolist()] + df.fillna("").values.tolist()) # < this for update new format
@@ -155,7 +155,7 @@ if b1:
         # to ghseet
         to_frame['Burn Rate'] = np.round(predictions[0],2)
         to_frame['Timestamp'] = '{:%Y-%m-%d %H:%M}'.format(datetime.now(tz = pytz.timezone('Asia/Jakarta')))
-        get_data_to_gsheet('my_sheet', to_frame)
+        get_data_to_gsheet('Sheet1', to_frame)
         with col1_sb:
             st.markdown(f"<h3 style='text-align: center;'>Burnout Rate : {predictions[0] * 100:.2f}%</h3>", unsafe_allow_html=True)
         with col2_sb:
