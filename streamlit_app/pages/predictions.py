@@ -31,7 +31,7 @@ def get_data_to_gsheet(sheetname, data):
      sh = gc.open_by_key("1ZqBG4UIGUmopoiMkgSVrHmLE7Q6Vjw5Nr7I3hNORCZQ") # MP real
 
     # # select sheet 
-     worksheet_1 = sh.worksheet(f"Sheet1") 
+     worksheet_1 = sh.worksheet(f"my_sheet") 
      orksheet_1.clear() # clear worksheet 
 
      # worksheet_1.update([df.columns.values.tolist()] + df.fillna("").values.tolist()) # < this for update new format
