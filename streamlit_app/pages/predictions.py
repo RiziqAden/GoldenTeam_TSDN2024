@@ -155,7 +155,7 @@ if b1:
         # to ghseet
         to_frame['Burn Rate'] = np.round(predictions[0],2)
         to_frame['Timestamp'] = '{:%Y-%m-%d %H:%M}'.format(datetime.now(tz = pytz.timezone('Asia/Jakarta')))
-        get_data_to_gsheet('Sheet1', to_frame)
+        get_data_to_gsheet('my_sheet', to_frame)
         with col1_sb:
             st.markdown(f"<h3 style='text-align: center;'>Burnout Rate : {predictions[0] * 100:.2f}%</h3>", unsafe_allow_html=True)
         with col2_sb:
