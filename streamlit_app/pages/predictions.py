@@ -148,18 +148,24 @@ if b1:
 
     # predictions
     with st.spinner(text="In progress..."):
-        to_frame = pd.DataFrame(input_data)
-        input_data = pipeline.transform(to_frame)
-        predictions = model.predict(input_data)
+    # Mengonversi input data ke DataFrame
+    to_frame = pd.DataFrame(input_data)
+    input_data = pipeline.transform(to_frame)
+    predictions = model.predict(input_data)
 
-        # to ghseet
-        to_frame['Burn Rate'] = np.round(predictions[0],2)
-        to_frame['Timestamp'] = '{:%Y-%m-%d %H:%M}'.format(datetime.now(tz = pytz.timezone('Asia/Jakarta')))
-        get_data_to_gsheet('Sheet1', to_frame)
-        with col1_sb:
-            st.markdown(f"<h3 style='text-align: center;'>Burnout Rate : {predictions[0] * 100:.2f}%</h3>", unsafe_allow_html=True)
-        with col2_sb:
-            get_burnout_recommendation(predictions)
+    # Menambahkan kolom hasil prediksi dan timestamp
+    to_frame['Burn Rate'] = np.round(predictions[0], 2)
+    to_frame['Timestamp'] = '{:%Y-%m-%d %H:%M}'.format(datetime.now(tz=pytz.timezone('Asia/Jakarta')))
+
+    # Menampilkan tabel data di Streamlit
+    st.markdown("<h3>Hasil Prediksi:</h3>", unsafe_allow_html=True)
+    st.dataframe(to_frame)
+
+    # Menampilkan informasi prediksi dan rekomendasi
+    with col1_sb:
+        st.markdown(f"<h3 style='text-align: center;'>Burnout Rate : {predictions[0] * 100:.2f}%</h3>", unsafe_allow_html=True)
+    with col2_sb:
+        get_burnout_recommendation(predictions)
 else:
     st.info('Silakan isi formulir ini untuk mendapatkan wawasan yang lebih baik')
 
